@@ -1,0 +1,22 @@
+//This is where you would write your CSS/SASS.  It is connected and the rules are in place in your webpack.config.js file.
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: Roboto, sans-serif;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Roboto,
+      Arial, sans-serif;
+    background-color: whitesmoke;
+  }
+  
+  h1 {
+    display: flex;
+    font-size: 50px;
+    color: red;
+    justify-content: center;
+  }

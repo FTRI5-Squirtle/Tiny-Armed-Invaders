@@ -1,0 +1,47 @@
+{
+  "name": "tiny-armed-invaders",
+  "version": "1.0.0",
+  "description": "A spin off the classic Space Invaders game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"node ./src/server/server.js\" \"webpack serve --mode development\"",
+    "build": "webpack --config webpack.config.js",
+    "dev": "webpack serve --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FTRI5-Squirtle/Tiny-Armed-Invaders.git"
+  },
+  "author": "Alexis Smith, Brit Lim, Nick Echols, Tyler Pohn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FTRI5-Squirtle/Tiny-Armed-Invaders/issues"
+  },
+  "homepage": "https://github.com/FTRI5-Squirtle/Tiny-Armed-Invaders#readme",
+  "dependencies": {
+    "@testing-library/react": "^12.1.2",
+    "concurrently": "^7.0.0",
+    "express": "^4.17.2",
+    "jest": "^27.4.7",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-router-dom": "^5.3.0",
+    "webpack-dev-server": "^4.7.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.5.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "node-sass": "^6.0.1",
+    "nodemon": "^2.0.15",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1"
+  }
+}
