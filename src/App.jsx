@@ -4,15 +4,24 @@
 //Otherwise this file would act as your initial component.  Happy coding!
 
 import React  from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { render } from 'react-dom';
+import SignUp from './views/SignUp.jsx';
+import Login from './views/Login.jsx';
+import HomePage from './views/HomePage.jsx';
 
 
-export default function App() {
-  return (
-    <div>
-      <h1>Welcome to your project.</h1>
-    </div>
-  )
-}
+  render (
+    <BrowserRouter>
+    <Routes>
+      <Route exact path="/" element={<Login />}></Route>
+      <Route exact path="/SignUp" element={<SignUp />}></Route>
+      <Route exact path="/Homepage" element={<HomePage />}></Route>
+      <Route exact path="/Login" element={<Login />}></Route>
+    </Routes>
+    </BrowserRouter>
+  , document.getElementById('app'));
+
 
 //If you plan on using React Routers, this is where you would start that process.  
 //Here is some boilerplate for Routes which you would set up based on your components.
@@ -22,6 +31,7 @@ export default function App() {
 // import Login from './components/Login';
 // import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import Homepage from './components/Homepage.jsx';
+// import { getFreePort } from 'webpack-dev-server';
 
 // export default function App() {
 //   return (
