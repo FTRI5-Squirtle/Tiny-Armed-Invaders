@@ -3,25 +3,25 @@
 //React Routers are not included in this boilerplate so if you plan on using React Routers, you would need to install react-router-dom
 //Otherwise this file would act as your initial component.  Happy coding!
 
-import React  from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { render } from 'react-dom';
-import SignUp from './views/SignUp.jsx';
-import Login from './views/Login.jsx';
+import React, { Component }  from 'react';
+// import ReactDOM from 'react-dom';
+// import { BrowserRouter, Route } from 'react-router-dom';
+// import { render } from 'react-dom';
 import HomePage from './views/HomePage.jsx';
 
-
-  render (
-    <BrowserRouter>
-    <Routes>
-      <Route exact path="/" element={<Login />}></Route>
-      <Route exact path="/SignUp" element={<SignUp />}></Route>
-      <Route exact path="/Homepage" element={<HomePage />}></Route>
-      <Route exact path="/Login" element={<Login />}></Route>
-    </Routes>
-    </BrowserRouter>
-  , document.getElementById('app'));
-
+class App extends Component {
+  constructor () {
+    super()
+  }
+  render(){
+  return(
+      <div className='App'>
+        <h1>Hi am I here, it's me App.</h1>
+        <HomePage />
+      </div>
+  );}
+}
+export default App;
 
 //If you plan on using React Routers, this is where you would start that process.  
 //Here is some boilerplate for Routes which you would set up based on your components.
@@ -42,3 +42,13 @@ import HomePage from './views/HomePage.jsx';
 //     </BrowserRouter>
 //   );
 // }
+/*
+<BrowserRouter>
+
+<Route exact path="/" element={<Login />}></Route>
+<Route exact path="/SignUp" element={<SignUp />}></Route>
+<Route exact path="/Homepage" element={<HomePage />}></Route>
+<Route exact path="/Login" element={<Login />}></Route>
+</BrowserRouter>
+, document.getElementById('root')
+*/
