@@ -4,9 +4,10 @@ const { fsync } = require('fs');
 const userRoutes = require('./routes/userRoutes.js');
 const PORT = 3000;
 const app = express();
-
+var cors = require('cors');
 
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 app.use(express.json());
 
 app.use(express.static('assets'));

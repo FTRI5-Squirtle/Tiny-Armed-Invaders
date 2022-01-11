@@ -5,18 +5,31 @@
 
 import React, { Component }  from 'react';
 import GameBoard from './components/GameBoard.jsx';
-// import ReactDOM from 'react-dom';
-// import { BrowserRouter, Route } from 'react-router-dom';
-// import { render } from 'react-dom';
+import SignUp from './views/SignUp.jsx';
+import Login from './views/Login.jsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './views/HomePage.jsx';
 
-
-const App = () => (
-  <div className='App'>
-    <HomePage />
-    <GameBoard />
-  </div>
-)
+export default function App() {
+  return (
+    <div className='App'>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/gameboard" element={<GameBoard />} />
+      </Routes>
+    </BrowserRouter>
+    </div>
+  );
+}
+// const App = () => (
+//   <div className='App'>
+//     <HomePage />
+//     <GameBoard />
+//   </div>
+// )
 
 // class App extends Component {
 //   constructor () {
@@ -30,7 +43,7 @@ const App = () => (
 //       </div>
 //   );}
 // }
-export default App;
+// export default App;
 
 //If you plan on using React Routers, this is where you would start that process.  
 //Here is some boilerplate for Routes which you would set up based on your components.
@@ -40,7 +53,6 @@ export default App;
 // import Login from './components/Login';
 // import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import Homepage from './components/Homepage.jsx';
-// import { getFreePort } from 'webpack-dev-server';
 
 // export default function App() {
 //   return (
