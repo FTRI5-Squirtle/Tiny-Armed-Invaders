@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Login from './Login.jsx';
-import SignUp from './SignUp.jsx';
+// import Login from './Login.jsx';
+// import SignUp from './SignUp.jsx';
 
-class HomePage extends Component {
-  render() {
+export default function HomePage() {
     return(
       <div>
         <h1>This is a homepage with tiny arms.</h1>
-        <h2>I'm a Sign Up Link</h2>
-        <SignUp />
-        <h2>I'm the login thingy</h2>
-        <Login />
+        <Link to = "/signup">
+          <button id="signupButton">Sign Up</button>
+        </Link>
+        <Link to = "/login">
+          <button id="loginButton">Login</button>
+        </Link>
         <h2>I'm a Marketing thingy</h2>
       </div>
     );
-  }
 };
-
-export default HomePage;

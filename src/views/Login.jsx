@@ -1,70 +1,48 @@
-// import { render } from '@testing-library/react';
-import React, { Component }  from 'react';
-// import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import regeneratorruntime from 'regenerator-runtime';
 
-class Login extends Component {
-  constructor() {
-    super();
+export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loggedIn, setLogin] = useState(false);
+  const [username, setUsername] = useState('');
+  let error;
+  const navigate = useNavigate();
 
-    this.state = {
-      email: '',
-      password: '',
-      errorEm: false,
-      errorPw: false
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const reqOptions = { email, password };
+    const response = await axios.post('/users/login', reqOptions);
+    if (response.data.error) error = response.data.error;
+    if (response.data.username) {
+      //TBD
+      //console.log(response.data.user_id);
+      console.log(username);
+      setUsername(response.data.username);
+      setLogin(true);
+      navigate('/gameboard', { state: { username: response.data.username } });
     }
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    this.setState({ email: '', password: ''})
-  };
-
-  handleChange = event => {
-    const { value, name } = event.target;
-    this.setState({ [name] : value })
-  }
-
-  // handle get request for login --> fetch to server
-
-  // handle error pop ups --> errorState
-  /*
-  <div class="alert alert-danger" role="alert">
-  This is a danger alert—check it out!
-</div>*/
-
-  render(){
-    return (
-      <div className='logIn'> 
-        <h3>I've faced the Tiny Arms before.</h3>
-        <span>Sign in with your email and password.</span>
-        <form onSubmit={this.handleSubmit} >
-          <label>Email</label>
-          <input 
-            name='email' 
-            type='email' 
-            value={this.state.email} 
-            onChange={this.handleChange} 
-            required  
-          />
-
-          <label>Password</label>
-          <input 
-            name='password' 
-            type='password' 
-            value={this.state.password} 
-            onChange={this.handleChange} 
-            required
-          />
-
-          <input 
-            type='submit' 
-            value='Log thyself in'
-          />
-        </form>
-      </div>
-    )
-  }
+  return (
+    <div className='logIn'>
+      <h1>Login</h1>
+      <form className="loginform" onSubmit={handleSubmit}>
+        <label id="labelcss">Email </label>
+        <input type="text" onChange={(e) => setEmail(e.target.value)} />
+        <label id="labelcss">Password </label>
+        <input type="password" onChange={(e) => setPassword(e.target.value)} />
+        <button id="loginbtn2" type="submit">
+          Log in
+        </button>
+      </form>
+      <p id="textcss">Don't have an account yet?</p>
+      <Link to="/signup">
+        <button id="signupbtn">Sign Up </button>
+      </Link>
+      <div>{error}</div>
+    </div>
+  );
 }
-
-
-export default Login;
