@@ -4,25 +4,25 @@ const userController = {};
 
 // POST request to /user/login
 userController.loginUser = (req, res, next) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
   
-    if (!username || !password) {
+    if (!email || !password) {
       return next({
-        log: 'userController.loginUser error: Username or password was not provided.',
+        log: 'userController.loginUser error: Email or password was not provided.',
         status: 400,
-        message: { err: 'Failed to log in. Username or password not provided.' },
+        message: { err: 'Failed to log in. Email or password not provided.' },
       });
     }
   
-    const userQuery = `SELECT * FROM users WHERE username = '${username}'`;
+    const userQuery = `SELECT * FROM users WHERE email = '${email}'`;
     db.query(userQuery)
       .then((foundUser) => {
         if (!foundUser.rows.length) {
           return next({
-            log: 'userController.loginUser: Username not found in database.',
+            log: 'userController.loginUser: email not found in database.',
             status: 400,
             message: {
-              err: 'userController.loginUser: Username not found in database.',
+              err: 'userController.loginUser: email not found in database.',
             },
           });
         }
@@ -57,12 +57,12 @@ userController.loginUser = (req, res, next) => {
     // Extract username, password, and optional name from req.body
     const { username, password, email } = req.body;
   
-    if (!username || !password) {
+    if (!username || !password || !email) {
       return next({
-        log: 'userController.registerUser: Username or password not provided.',
+        log: 'userController.registerUser: Username or password or email not provided.',
         status: 400,
         message: {
-          err: 'userController.registerUser: Username or password not provided.',
+          err: 'userController.registerUser: Username or password or email not provided.',
         },
       });
     }
@@ -70,7 +70,7 @@ userController.loginUser = (req, res, next) => {
   
     const hashedPassword = bcrypt.hash(password, 10);
     const queryString = `INSERT INTO users (username, email, password)
-    VALUES ($1, $2, $3, $4)
+    VALUES ($1, $2, $3)
     RETURNING uuid`;
   
     // Values array
@@ -93,3 +93,12 @@ userController.loginUser = (req, res, next) => {
   };
 
 module.exports = userController;
+
+/*
+CREATE TABLE users (
+  uuid     SERIAL PRIMARY KEY,
+  email     VARCHAR(255),
+  username      VARCHAR(255),
+  password     VARCHAR(255)
+);
+*/

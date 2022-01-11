@@ -1,13 +1,20 @@
 const path = require('path');
 const express = require('express');
 const { fsync } = require('fs');
+const userRoutes = require('./routes/userRoutes.js');
 const PORT = 3000;
 const app = express();
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static('assets'));
+
+app.use('/users', userRoutes);
+
+
+
 
 app.get('/', (req, res) => {
   res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
