@@ -4,23 +4,32 @@
 //Otherwise this file would act as your initial component.  Happy coding!
 
 import React, { Component }  from 'react';
+import GameBoard from './components/GameBoard.jsx';
 // import ReactDOM from 'react-dom';
 // import { BrowserRouter, Route } from 'react-router-dom';
 // import { render } from 'react-dom';
 import HomePage from './views/HomePage.jsx';
 
-class App extends Component {
-  constructor () {
-    super()
-  }
-  render(){
-  return(
-      <div className='App'>
-        <h1>Hi am I here, it's me App.</h1>
-        <HomePage />
-      </div>
-  );}
-}
+
+const App = () => (
+  <div className='App'>
+    <HomePage />
+    <GameBoard />
+  </div>
+)
+
+// class App extends Component {
+//   constructor () {
+//     super()
+//   }
+//   render(){
+//   return(
+//       <div className='App'>
+//         <h1>Tiny Armed Invaders</h1>
+//         <GameBoard />
+//       </div>
+//   );}
+// }
 export default App;
 
 //If you plan on using React Routers, this is where you would start that process.  

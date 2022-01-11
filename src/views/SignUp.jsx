@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     const [values, setValues] = React.useState({
@@ -21,13 +21,17 @@ const SignUp = () => {
         fetch('SignUp', requestOptions)
           .then(res => res.json())
           .then(res => {
-             
+             if(res.user_id) {
+                 props.authenticator({authorized: true})
+             }
+             console.log('Res: ', res)
           })
+          
     };
 
-    // const handleInputChange = (prop) => (event) => {
-    //     setValues({ ...values, [prop]: event.target.value })
-    // };
+    const handleInputChange = (prop) => (event) => {
+        setValues({ ...values, [prop]: event.target.value })
+    };
 
 
 return (
@@ -39,12 +43,36 @@ return (
                     <input
                     type='username'
                     id='username'
-                    // onChange={handleInputChange('username')}
+                    onChange={handleInputChange('username')}
                     value={values.username}
                     name='username'
                     className='form-conrol'
                     placeholder='Enter Email'
                     />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="email">Email:</label>
+                    <input
+                    type="email"
+                    id="email"
+                    onChange={handleInputChange("email")}
+                    value={values.email}
+                    name="email"
+                    className="form-control"
+                    placeholder="Enter Email"
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="password">Password:</label>
+                    <input
+                    type="password"
+                    id="password"
+                    onChange={handleInputChange("password")}
+                    value={values.password}
+                    name="password"
+                    className="form-control"
+                    placeholder="Create Password"
+                    /> 
                 </div>
                 {/* <Link to="/Login"> */}
                   <button onClick={onFormSubmit} variant="outlined">
