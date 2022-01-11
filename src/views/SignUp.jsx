@@ -18,10 +18,10 @@ const SignUp = () => {
                 password: values.password
             })
         }
-        fetch('SignUp', requestOptions)
+        fetch('signup', requestOptions)
           .then(res => res.json())
           .then(res => {
-             if(res.user_id) {
+             if(res.username) {
                  props.authenticator({authorized: true})
              }
              console.log('Res: ', res)
