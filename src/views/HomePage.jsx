@@ -9,7 +9,7 @@ class HomePage extends Component {
       <div>
         <h1>This is a homepage with tiny arms.</h1>
         <h2>I'm a Sign Up Link</h2>
-        {/* <SignUp /> */}
+        <SignUp />
         <h2>I'm the login thingy</h2>
         <Login />
         <h2>I'm a Marketing thingy</h2>
