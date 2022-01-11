@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Login from './Login.jsx';
 import SignUp from './SignUp.jsx';
 
