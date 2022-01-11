@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     const [values, setValues] = React.useState({
@@ -25,9 +25,9 @@ const SignUp = () => {
           })
     };
 
-    const handleInputChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value })
-    };
+    // const handleInputChange = (prop) => (event) => {
+    //     setValues({ ...values, [prop]: event.target.value })
+    // };
 
 
 return (
@@ -39,18 +39,18 @@ return (
                     <input
                     type='username'
                     id='username'
-                    onChange={handleInputChange('username')}
+                    // onChange={handleInputChange('username')}
                     value={values.username}
                     name='username'
                     className='form-conrol'
                     placeholder='Enter Email'
                     />
                 </div>
-                <Link to="/Login">
+                {/* <Link to="/Login"> */}
                   <button onClick={onFormSubmit} variant="outlined">
                   Sign Up
                   </button>
-                </Link>   
+                {/* </Link>    */}
             </form> 
         </div>       
     </div>

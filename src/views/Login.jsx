@@ -1,8 +1,8 @@
-import { render } from '@testing-library/react';
-import React from 'react';
-import { Link } from 'react-router-dom';
+// import { render } from '@testing-library/react';
+import React, { Component }  from 'react';
+// import { Link } from 'react-router-dom';
 
-class Login extends React.Component{
+class Login extends Component {
   constructor() {
     super();
 
@@ -35,9 +35,10 @@ class Login extends React.Component{
   render(){
     return (
       <div className='logIn'> 
-        <h2>I've faced the Tiny Arms before.</h2>
+        <h3>I've faced the Tiny Arms before.</h3>
         <span>Sign in with your email and password.</span>
         <form onSubmit={this.handleSubmit} >
+          <label>Email</label>
           <input 
             name='email' 
             type='email' 
@@ -45,7 +46,8 @@ class Login extends React.Component{
             onChange={this.handleChange} 
             required  
           />
-          <label>Email</label>
+
+          <label>Password</label>
           <input 
             name='password' 
             type='password' 
@@ -53,10 +55,10 @@ class Login extends React.Component{
             onChange={this.handleChange} 
             required
           />
-          <label>Password</label>
+
           <input 
             type='submit' 
-            value='Submit Form'
+            value='Log thyself in'
           />
         </form>
       </div>
