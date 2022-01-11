@@ -13,7 +13,7 @@ userController.loginUser = (req, res, next) => {
       message: { err: 'Failed to log in. Email or password not provided.' },
     });
   }
-  //const hashedPassword = bcrypt.hash(password, 10);
+
   const userQuery = `SELECT * FROM users WHERE email = '${email}'`;
   db.query(userQuery)
     .then((foundUser) => {
@@ -26,8 +26,8 @@ userController.loginUser = (req, res, next) => {
           },
         });
       }
-
-      if (foundUser.rows[0].password == password) {
+      const storedPassword = foundUser.rows[0].password;
+      if (bcrypt.compare(password, storedPassword)) {
         res.locals.username = foundUser.rows[0].username;
         return next();
       } else {
@@ -83,13 +83,13 @@ userController.registerUser = (req, res, next) => {
     });
   }
 
-  //const hashedPassword = bcrypt.hash(password, 10);
+  const hashedPassword = bcrypt.hash(password, 10);
   const queryString = `INSERT INTO users (username, email, password)
     VALUES ($1, $2, $3)
     RETURNING username`;
 
   // Values array
-  const values = [username, email, password];
+  const values = [username, email, hashedPassword];
 
   // Database query
   db.query(queryString, values)
@@ -141,6 +141,8 @@ score INT NOT NULL
 
 INSERT INTO scores (username, score) VALUES ('testusername2', 1250);
 
+
+https://heynode.com/blog/2020-04/salt-and-hash-passwords-bcrypt/
 
 https://www.postgresqltutorial.com/postgresql-foreign-key/
 
