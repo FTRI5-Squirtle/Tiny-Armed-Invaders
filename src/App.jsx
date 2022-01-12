@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect  }  from 'react';
+import React  from 'react';
 import SignUp from './views/SignUp.jsx';
 import Login from './views/Login.jsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './views/HomePage.jsx';
-import Game from './vanillaJSinvaders/Game.js';
+// import Game from './vanillaJSinvaders/Game.js';
 
 export default function App() {
   return (

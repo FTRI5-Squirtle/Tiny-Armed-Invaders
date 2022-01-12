@@ -26,7 +26,7 @@ function Signup() {
       //TBD
       setLogin(true);
       setUserId(response.data.username);
-      navigate('/gameboard', { state: { username: response.data.username } });
+      navigate('/game', { state: { username: response.data.username } });
     }
   };
   return (

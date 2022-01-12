@@ -31,6 +31,7 @@
     "pg": "^8.7.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "react-player": "^2.9.0",
     "react-router-dom": "^6.2.1",
     "regenerator-runtime": "^0.13.9",
     "styled-components": "^5.3.3",

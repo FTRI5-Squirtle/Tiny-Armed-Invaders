@@ -22,7 +22,7 @@ export default function Login() {
       console.log(username);
       setUsername(response.data.username);
       setLogin(true);
-      navigate('/gameboard', { state: { username: response.data.username } });
+      navigate('/game', { state: { username: response.data.username } });
     }
   };
 
