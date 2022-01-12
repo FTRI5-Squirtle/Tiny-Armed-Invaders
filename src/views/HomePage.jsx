@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Game from '../vanillaJSinvaders/Game.js';
+import ReactPlayer from "react-player"
+// import Game from '../vanillaJSinvaders/Game.js';
 
 export default function HomePage() {
     return(
@@ -14,8 +15,11 @@ export default function HomePage() {
         </Link>
         <h2>I'm a Marketing thingy</h2>
         <div>
-          <Game />
-        </div>
+      <ReactPlayer
+        url="https://youtu.be/MztdzGQ_IuM"
+        controls
+      />
+    </div>
       </div>
     );
 };

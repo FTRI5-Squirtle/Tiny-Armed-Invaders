@@ -14,12 +14,19 @@ app.use(express.static('assets'));
 
 app.use('/users', userRoutes);
 
-
+app.use(express.static(path.join(__dirname, '../' )))
 
 
 app.get('/', (req, res) => {
   res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
 });
+
+app.get('/game', (req, res) => {
+  res.status(200).setHeader('Content-Type', 'text/html').sendFile(path.resolve(__dirname, '../game.html'));
+});
+
+
+
 
 //global error handler
 app.use('/', (err, req, res, next) => {
