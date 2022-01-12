@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Game from '../vanillaJSinvaders/Game.js';
+// import Game from '../vanillaJSinvaders/Game.js';
 
 export default function HomePage() {
     return(
@@ -13,9 +13,9 @@ export default function HomePage() {
           <button id="loginButton">Login</button>
         </Link>
         <h2>I'm a Marketing thingy</h2>
-        <div>
+        {/* <div>
           <Game />
-        </div>
+        </div> */}
       </div>
     );
 };
