@@ -85,5 +85,5 @@ module.exports = {
     extensions: ['.ts', '.jsx', '.js', '.svg', '.png']
   },
   
-  plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
+  plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })]
 };
