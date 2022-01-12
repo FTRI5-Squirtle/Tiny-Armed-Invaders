@@ -1,23 +1,61 @@
 //This is where you would write your CSS/SASS.  It is connected and the rules are in place in your webpack.config.js file.
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-    font-family: Roboto, sans-serif;
-  }
+// * {
+//     box-sizing: border-box;
+//     margin: 0;
+//     padding: 0;
+//     scroll-behavior: smooth;
+//     font-family: Roboto, sans-serif;
+//   }
   
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Roboto,
-      Arial, sans-serif;
-    background-color: whitesmoke;
-  }
+//   body {
+//     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Roboto,
+//       Arial, sans-serif;
+//     background-color: whitesmoke;
+//   }
   
-  h1 {
-    display: flex;
-    font-size: 50px;
-    color: red;
-    justify-content: center;
-  }
+//   h1 {
+//     display: flex;
+//     font-size: 50px;
+//     color: red;
+//     justify-content: center;
+//   }
 
+//   canvas {
+//     background-color: navy;
+//   }
+// html {
+//   background-color: white;
+// }
+
+  .grid {
+    width: 300px;
+    height: 300px;
+    border: solid black 1px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .grid div {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .invader {
+    background-color: purple;
+    border-radius: 10px;
+    //background-image: url('./assets/trexhead.jpeg');
+    //background-image: url('https://thumbs.dreamstime.com/t/dinosaur-head-vector-cartoon-48513519.jpg');
+  }
+  
+  .shooter {
+    background-color: green;
+  
+  }
+  
+  .laser {
+    background-color: orange;
+  }
+  
+  .boom {
+    background-color: red;
+  }

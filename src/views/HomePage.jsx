@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import Login from './Login.jsx';
-// import SignUp from './SignUp.jsx';
+import Game from '../vanillaJSinvaders/Game.js';
 
 export default function HomePage() {
     return(
@@ -14,6 +13,9 @@ export default function HomePage() {
           <button id="loginButton">Login</button>
         </Link>
         <h2>I'm a Marketing thingy</h2>
+        <div>
+          <Game />
+        </div>
       </div>
     );
 };
