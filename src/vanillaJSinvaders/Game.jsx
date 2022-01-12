@@ -177,7 +177,7 @@ return(
   <div>
     <h1 class="results">0</h1>
     <div class="grid"></div>
-    <button onClick={refreshPage}>Start Game</button>
+    <button className="bouncy" onClick={refreshPage}>Start Game</button>
   </div>
 )
 }

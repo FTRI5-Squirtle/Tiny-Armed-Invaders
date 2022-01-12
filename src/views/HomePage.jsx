@@ -11,7 +11,7 @@ export default function HomePage() {
           <button id="signupButton">Sign Up</button>
         </Link>
         <Link to = "/login">
-          <button id="loginButton">Login</button>
+          <button className="bouncy" id="loginButton">Login</button>
         </Link>
         <h2>I'm a Marketing thingy</h2>
         <div>
