@@ -13,7 +13,7 @@ module.exports = {
   // Webpack will bundle all JS/JSX into this file
   //publicPath acts as a fallback to root for other urls
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'src'),
     publicPath: '/',
     filename: 'bundle.js'
   },

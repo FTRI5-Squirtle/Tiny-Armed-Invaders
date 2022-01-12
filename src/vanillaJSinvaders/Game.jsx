@@ -1,4 +1,7 @@
+import React from 'react';
 
+export default function Game() {
+document.addEventListener('DOMContentLoaded', () => {
 const grid = document.querySelector('.grid');
 const resultsDisplay = document.querySelector('.results');
 let currentShooterIndex = 202;
@@ -162,8 +165,23 @@ function shoot(e) {
     case 'ArrowUp':
     laserId = setInterval(moveLaser, 100)
   }
-
-
 }
-
 document.addEventListener('keydown', shoot);
+
+
+window.addEventListener("load", event => {
+  document.getElementById("reload").onclick = function() {
+      location.reload(true);
+  }
+});
+});
+
+
+return(
+  <div>
+    <h1 class="results">0</h1>
+    <div class="grid"></div>
+    <button id="reload">Start Game</button>
+  </div>
+)
+}
