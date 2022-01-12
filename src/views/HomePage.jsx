@@ -5,8 +5,9 @@ import ReactPlayer from "react-player"
 
 export default function HomePage() {
     return(
-      <div>
-        <h1>This is a homepage with tiny arms.</h1>
+      <div class="homepage">
+           
+        <h1 >This is a homepage with tiny arms.</h1>
         <Link to = "/signup">
           <button id="signupButton">Sign Up</button>
         </Link>
@@ -20,6 +21,12 @@ export default function HomePage() {
         controls
       />
     </div>
+    {/* <div class="background-container">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/moon2.png" alt=""/>
+          <div class="stars"></div>
+          <div class="twinkling"></div>
+          <div class="clouds"></div>
+        </div> */}
       </div>
     );
 };
