@@ -3,7 +3,7 @@ import SignUp from './views/SignUp.jsx';
 import Login from './views/Login.jsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './views/HomePage.jsx';
-// import Game from './vanillaJSinvaders/Game.js';
+import Game from './vanillaJSinvaders/Game.jsx';
 
 export default function App() {
   return (
@@ -13,7 +13,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        {/* <Route path="/game" element={<Game />} /> */}
+        <Route path="/game" element={<Game />} />
       </Routes>
     </BrowserRouter>
     </div>
