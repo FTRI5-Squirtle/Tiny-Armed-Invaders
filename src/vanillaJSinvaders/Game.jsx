@@ -1,7 +1,13 @@
 import React from 'react';
+import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
-export default function Game() {
+
+export default function Game(props) {
+  const { state } = useLocation();
+  const { username } = state;
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('state:', state);
 const grid = document.querySelector('.grid');
 const resultsDisplay = document.querySelector('.results');
 let currentShooterIndex = 202;
@@ -11,7 +17,7 @@ let invadersId;
 let goingRight = true;
 let aliensRemoved = []; //!can accrue score here based on array length
 let results = 0;
-let gameSpeed = 1000; //decrement by 100
+let gameSpeed = 100; //decrement by 100
 let army = 0;
 let mothership = [0];
 
@@ -31,7 +37,6 @@ let alienInvaders = [0];
 
 
 function draw() {
-    console.log(aliensRemoved);
     if (aliensRemoved.length > alienInvaders.length-1) {
       alienInvaders = [0];
       mothership.push(++army);
@@ -112,6 +117,12 @@ function moveInvaders() {
     if(squares[currentShooterIndex].classList.contains('invader', 'shooter')){
       // console.log('game over');
       resultsDisplay.innerHTML = 'GAME OVER'
+      const score = results;
+      console.log('username:', state.username);
+      console.log('score:', score);
+      const reqOptions = { username, score };
+      axios.post('/scores', reqOptions);
+
       clearInterval(invadersId);
     };
 //! this needs work.
