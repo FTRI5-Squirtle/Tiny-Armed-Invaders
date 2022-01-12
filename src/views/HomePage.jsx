@@ -27,6 +27,7 @@ export default function HomePage() {
       <ReactPlayer
         url="https://youtu.be/MztdzGQ_IuM"
         controls
+        
       />
     </div>
       </div>
