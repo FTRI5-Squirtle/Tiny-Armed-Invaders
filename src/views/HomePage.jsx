@@ -1,19 +1,46 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import ReactPlayer from "react-player"
+import ReactPlayer from 'react-player';
+import styled from 'styled-components';
 // import Game from '../vanillaJSinvaders/Game.js';
 
 export default function HomePage() {
+  const Button = styled.button`
+  font-family: 'Bangers', cursive;
+  // background: transparent;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+  margin: 0.5em 1em;
+  padding: 0.25em 1em;
+
+  ${props => props.primary && css`
+    background: palevioletred;
+    color: white;
+  `}
+`;
+
+const Container = styled.div`
+  text-align: center;
+`
     return(
       <div>
-        <h1>This is a homepage with tiny arms.</h1>
-        <Link to = "/signup">
-          <button id="signupButton">Sign Up</button>
+        <Container>
+        <h1>ATTACK OF THE TINY ARM INVADERS.</h1>
+        </Container>
+          <Link to = "/signup">
+        <Container>
+            <Button id="signupButton">New Here? Answer the Call.</Button>
+        </Container>
         </Link>
         <Link to = "/login">
-          <button className="bouncy" id="loginButton">Login</button>
+        <Container>
+          <Button className="bouncy" id="loginButton">Faced Them Before? Enter the Battlefield.</Button>
+        </Container>
         </Link>
-        <h2>I'm a Marketing thingy</h2>
+        <Container><h2> Long, long ago, Dinosaurs Roamed the Earth. </h2>
+        <h2> We Thought We Were Safe. Then They Returned. </h2>
+        <h2>In SpaceShips... and JetPacks.</h2></Container>
         <div>
       <ReactPlayer
         url="https://youtu.be/MztdzGQ_IuM"
