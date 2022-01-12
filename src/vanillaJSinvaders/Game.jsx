@@ -168,20 +168,16 @@ function shoot(e) {
 }
 document.addEventListener('keydown', shoot);
 
-
-window.addEventListener("load", event => {
-  document.getElementById("reload").onclick = function() {
-      location.reload(true);
-  }
 });
-});
-
+function refreshPage() {
+  window.location.reload(false);
+}
 
 return(
   <div>
     <h1 class="results">0</h1>
     <div class="grid"></div>
-    <button id="reload">Start Game</button>
+    <button onClick={refreshPage}>Start Game</button>
   </div>
 )
 }
