@@ -21,6 +21,10 @@ export default function HomePage() {
         </Link>
         <h2>I'm a Marketing thingy</h2>
         <div>
+        <a href="http://github.com/login/oauth/authorize?response_type=code&client_id=403beed96884fcf48e82&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fgame">
+          <button>GitHub Signin</button>
+        </a>
+          {/* <a onclick="location.href = 'http://github.com/login/oauth/authorize?response_type=code&client_id=403beed96884fcf48e82&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fauth%2Fgithub%2Fcallback';" id="myButton" >GitHub Login</a> */}
       <ReactPlayer
         url="https://youtu.be/MztdzGQ_IuM"
         controls
