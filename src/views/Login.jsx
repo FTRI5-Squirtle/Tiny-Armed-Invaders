@@ -50,7 +50,7 @@ const Container = styled.div`
       <Container>
       <h1>Login To Face the Tiny-Armed Hoardes!</h1>
       </Container>
-      <Container>
+      <div className="centerDiv">
       <form className="loginform" onSubmit={handleSubmit}>
         <label id="labelcss">Email </label>
         <input type="text" onChange={(e) => setEmail(e.target.value)} />
@@ -60,7 +60,7 @@ const Container = styled.div`
           Log in
         </Button>
       </form>
-      </Container>
+      </div>
       <Container>
       <h2 >New here? Sign Up to Answer the Call</h2>
       </Container>
