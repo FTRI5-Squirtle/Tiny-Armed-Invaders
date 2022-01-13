@@ -6,32 +6,36 @@ import axios from 'axios';
 // import Game from '../vanillaJSinvaders/Game.js';
 
 export default function HomePage() {
+ const scores = [
+      { username: 'testusername2', score: 1250 },
+      { username: 'testusername4', score: 50 },
+      { username: 'testusername7', score: 30 },
+      { username: 'testusername7', score: 30 },
+      { username: 'testusername4', score: 20 },
+      { username: 'testusername4', score: 15 },
+      { username: 'testusername4', score: 11 },
+      { username: 'testusername2', score: 11 },
+      { username: 'testusername4', score: 10 },
+      { username: 'b3', score: 1 }
+    ];
   let global;
   const [roster, setRoster] = useState([]);
-  function populateRoster() {
-    roster.length ? roster.map(item => (
-      <li key={item}>
-        {item.username}{item.score}
-      </li>
-    )) : 'Not loaded yet'
+  let list = document.getElementById('list');
+
+
+  function populateRoster2() {
+    for (let i = 0; i < scores.length; i++) {
+      const li = document.createElement('li');
+      li.textContent = scores[i]['user'];
+      list.appendChild(li);
+    }
   }
-  useEffect(() => {
-    async function fetchData() {
-      const result = await axios.get('/scores');
-      setRoster(result.data);
-      console.log('result:', result.data)
-      global = result.data;
-      console.log('roster inside async:', roster)
-      const append = document.getElementById('append');
-      append.appendChild(result.data[0]);
-    } 
-    fetchData();
-    // console.log('result:', result)
+  
 
-  }, []);
-  populateRoster();
   console.log('roster line 30:', roster)
+  // setTimout(()=>{
 
+  // }, 2000)
     return(
       <div>
         <h1>This is a homepage with tiny arms.</h1>
@@ -49,15 +53,48 @@ export default function HomePage() {
           />
         </div>
         <div id='append' innerHTML={roster}>
-        {/* <ul id='ul'>
+
+        <ul id='list'>
           
           
-        </ul> */}
+        </ul>
         </div>
       </div>
     );
 };
 
+/*
+function getMessages(){
+  const returnedData = [];
+  fetch('http://localhost:3434/messages')
+    .then(response => response.json())
+    .then(data => {
+      const existingUnorderedList = document.getElementById('message-list');
+      const unorderedList = document.createElement('ul');
+      unorderedList.id = 'message-list';
+      for(const element of data){
+        const message = element.message;
+        const time = element.created_at;
+        const messageElement = document.createElement('li');
+        messageElement.innerText = element.message;
+        const buttonElement = document.createElement('button');
+        buttonElement.className = 'del';
+        buttonElement.innerText = 'Delete';
+        buttonElement.onclick = ()=>deleteMessage(element.id);
+        messageElement.appendChild(buttonElement);
+        unorderedList.appendChild(messageElement);
+      }
+      existingUnorderedList.parentNode.replaceChild(unorderedList,existingUnorderedList);
+      //document.querySelector('body').appendChild(unorderedList);
+    })
+    .catch(error=>{
+      console.log('caught in get', error.message);
+    });
+  returnedData.forEach(elem=>{
+    console.log(elem.message);
+  });
+}
+*/
 /*
 https://felixgerschau.com/react-rerender-components/
 https://www.delftstack.com/howto/react/force-rerender-in-react/
@@ -85,9 +122,7 @@ htmlObject.getElementById("roster").style.marginTop = something;
 [0]     { username: 'testusername4', score: 10 },
 [0]     { username: 'b3', score: 1 }
 [0]   ],
-https://github.com/MiguelH72/frontend-assessment
 
-https://github.com/CodesmithLLC/frontend-assessment/pull/2121/commits/8cf0a2235cb93520421599df942442383802b32a
 https://stackoverflow.com/questions/7070053/convert-a-sql-query-result-table-to-an-html-table-for-email
 
 function App() {
@@ -146,4 +181,42 @@ function App() {
   
   // getScoreRoster();
   //console.log('scoreRoster:', scoreRoster);
+
+
+    // function populateRoster() {
+  //   scores.forEach(item => {
+  //      list.appendChild(
+        
+  //       <li key={item}>
+  //         {item.username}{item.score}
+  //       </li>
+        
+  //     )
+  //  }
+  // }
+
+    // function populateRoster() {
+  //   roster.length ? roster.map(item => (
+  //     <li key={item}>
+  //       {item.username}{item.score}
+  //     </li>
+  //   )) : 'Not loaded yet'
+  // }
+
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await axios.get('/scores');
+      setRoster(result.data);
+      console.log('result:', result.data)
+      global = result.data;
+      console.log('roster inside async:', roster)
+      const append = document.getElementById('append');
+      append.appendChild(result.data[0]);
+    } 
+    fetchData();
+    // console.log('result:', result)
+
+  }, []);
+
     */
