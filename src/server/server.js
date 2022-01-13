@@ -4,7 +4,7 @@ const { fsync } = require('fs');
 const userRoutes = require('./routes/userRoutes.js');
 const PORT = 3000;
 const app = express();
-const { OauthTwo } = require('./controllers/oauthControllers')
+// const { OauthTwo } = require('./controllers/oauthControllers')
 var cors = require('cors');
 
 app.use(express.urlencoded({ extended: true }));
