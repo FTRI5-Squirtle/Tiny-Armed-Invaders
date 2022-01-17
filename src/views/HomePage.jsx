@@ -6,33 +6,44 @@ import axios from 'axios';
 // import Game from '../vanillaJSinvaders/Game.js';
 
 export default function HomePage() {
- const scores = [
-      { username: 'testusername2', score: 1250 },
-      { username: 'testusername4', score: 50 },
-      { username: 'testusername7', score: 30 },
-      { username: 'testusername7', score: 30 },
-      { username: 'testusername4', score: 20 },
-      { username: 'testusername4', score: 15 },
-      { username: 'testusername4', score: 11 },
-      { username: 'testusername2', score: 11 },
-      { username: 'testusername4', score: 10 },
-      { username: 'b3', score: 1 }
-    ];
-  let global;
+//  const scores = [
+//       { username: 'testusername2', score: 1250 },
+//       { username: 'testusername4', score: 50 },
+//       { username: 'testusername7', score: 30 },
+//       { username: 'testusername7', score: 30 },
+//       { username: 'testusername4', score: 20 },
+//       { username: 'testusername4', score: 15 },
+//       { username: 'testusername4', score: 11 },
+//       { username: 'testusername2', score: 11 },
+//       { username: 'testusername4', score: 10 },
+//       { username: 'b3', score: 1 }
+//     ];
+//   let global;
   const [roster, setRoster] = useState([]);
-  let list = document.getElementById('list');
+  // let list = document.getElementById('list');
+useEffect(() => {
+  axios
+    .get('/scores')
+    .then(res => {
+      console.log('res:', res);
+      setRoster(res.data.scoreRoster);
+    })
+    .catch(err => {
+      console.log('an error occured while fetching to scores');
+      console.log(err);
+    })
+}, []);
 
-
-  function populateRoster2() {
-    for (let i = 0; i < scores.length; i++) {
-      const li = document.createElement('li');
-      li.textContent = scores[i]['user'];
-      list.appendChild(li);
-    }
-  }
+  // function populateRoster2() {
+  //   for (let i = 0; i < scores.length; i++) {
+  //     const li = document.createElement('li');
+  //     li.textContent = scores[i]['user'];
+  //     list.appendChild(li);
+  //   }
+  // }
   
 
-  console.log('roster line 30:', roster)
+  // console.log('roster line 30:', roster)
   // setTimout(()=>{
 
   // }, 2000)
@@ -47,18 +58,42 @@ export default function HomePage() {
         </Link>
         <h2>I'm a Marketing thingy</h2>
         <div>
-          <ReactPlayer
+          {/* <ReactPlayer
             url="https://youtu.be/MztdzGQ_IuM"
             controls
-          />
+          /> */}
+          <div>
+            {
+            console.log('roster:', typeof roster, roster)
+
+            }
+            {
+            console.log('roster.scoreRoster:', typeof roster.scoreRoster, roster.scoreRoster)
+
+            }
+          </div>
+          <div>
+          
+            <ul>
+              {
+              
+              roster.map(entry => (
+                <li>{entry.username}</li>
+              ))
+              } 
+           
+            </ul>
+          </div>
         </div>
-        <div id='append' innerHTML={roster}>
+
+        {/* <div id='append' innerHTML={roster}>
 
         <ul id='list'>
           
           
         </ul>
-        </div>
+        </div> */}
+
       </div>
     );
 };
