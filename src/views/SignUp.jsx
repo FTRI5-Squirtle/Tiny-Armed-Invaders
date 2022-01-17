@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 function Signup() {
   const [username, setUsername] = useState('');
@@ -29,6 +30,25 @@ function Signup() {
       navigate('/game', { state: { username: response.data.username } });
     }
   };
+  const Button = styled.button`
+  font-family: 'Bangers', cursive;
+  // background: transparent;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+  margin: 0.5em 1em;
+  padding: 0.25em 1em;
+
+  ${props => props.primary && css`
+    background: palevioletred;
+    color: white;
+  `}
+`;
+
+const Container = styled.div`
+  text-align: center;
+  position: relative;
+`
   return (
     <div className="signupform">
       <h1>Sign Up </h1>
@@ -52,12 +72,16 @@ function Signup() {
           onChange={(e) => setPassword(e.target.value)}
         />
         </div>
-        <button id="signupbtn2" type='submit'>Sign Up</button>
+        <Container>
+        <Button className="bouncy" id="signupbtn2" type='submit'>Sign Up</Button>
+        </Container>
       </form>
-      <p id="textcss"><br/>Already have an account?</p>
+      <p id="textcss"><br/>Have you already faced the Tiny-Arms?</p>
       <Link to='/login'>
-      <button id="loginbtn">Login 
-      </button>
+       <Container>
+      <Button id="loginbtn">Login 
+      </Button>
+      </Container> 
       </Link>
       {/* <div>{error}</div> */}
     </div>

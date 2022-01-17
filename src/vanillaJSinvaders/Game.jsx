@@ -1,11 +1,29 @@
 import React from 'react';
-import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import styled from 'styled-components';
+import Instructions from '../components/Instructions';
 
 
-export default function Game(props) {
-  const { state } = useLocation();
-  const { username } = state;
+export default function Game() {
+  const Button = styled.button`
+  font-family: 'Bangers', cursive;
+  // background: transparent;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+  margin: 0.5em 1em;
+  padding: 0.25em 1em;
+
+  ${props => props.primary && css`
+    background: palevioletred;
+    color: white;
+  `}
+`;
+
+const Container = styled.div`
+  text-align: center;
+  position: relative;
+`
+
 document.addEventListener('DOMContentLoaded', () => {
   console.log('state:', state);
 const grid = document.querySelector('.grid');
@@ -15,7 +33,7 @@ let width = 15;
 let direction= 1;
 let invadersId;
 let goingRight = true;
-let aliensRemoved = []; //!can accrue score here based on array length
+let aliensRemoved = [];
 let results = 0;
 let gameSpeed = 100; //decrement by 100
 let army = 0;
@@ -186,9 +204,14 @@ function refreshPage() {
 
 return(
   <div>
+    <Container>
     <h1 class="results">0</h1>
     <div class="grid"></div>
-    <button onClick={refreshPage}>Start Game</button>
+    </Container>
+    <Instructions />
+    <Container>
+    <Button className="bouncy" onClick={refreshPage}>Start Game</Button>
+    </Container>
   </div>
 )
 }

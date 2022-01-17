@@ -1,99 +1,83 @@
 import React, { Component, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import ReactPlayer from "react-player"
+import ReactPlayer from 'react-player';
+import styled from 'styled-components';
 import axios from 'axios';
-
 // import Game from '../vanillaJSinvaders/Game.js';
 
 export default function HomePage() {
-//  const scores = [
-//       { username: 'testusername2', score: 1250 },
-//       { username: 'testusername4', score: 50 },
-//       { username: 'testusername7', score: 30 },
-//       { username: 'testusername7', score: 30 },
-//       { username: 'testusername4', score: 20 },
-//       { username: 'testusername4', score: 15 },
-//       { username: 'testusername4', score: 11 },
-//       { username: 'testusername2', score: 11 },
-//       { username: 'testusername4', score: 10 },
-//       { username: 'b3', score: 1 }
-//     ];
-//   let global;
-  const [roster, setRoster] = useState([]);
-  // let list = document.getElementById('list');
-useEffect(() => {
-  axios
-    .get('/scores')
-    .then(res => {
-      console.log('res:', res);
-      setRoster(res.data.scoreRoster);
-    })
-    .catch(err => {
-      console.log('an error occured while fetching to scores');
-      console.log(err);
-    })
-}, []);
-
-  // function populateRoster2() {
-  //   for (let i = 0; i < scores.length; i++) {
-  //     const li = document.createElement('li');
-  //     li.textContent = scores[i]['user'];
-  //     list.appendChild(li);
-  //   }
-  // }
   
+  const Button = styled.button`
+  font-family: 'Bangers', cursive;
+  // background: transparent;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+  margin: 0.5em 1em;
+  padding: 0.25em 1em;
 
-  // console.log('roster line 30:', roster)
-  // setTimout(()=>{
+  ${props => props.primary && css`
+    background: palevioletred;
+    color: white;
+  `}
+`;
 
-  // }, 2000)
+const Container = styled.div`
+  text-align: center;
+`
+let keyNumber = 0;
+const [roster, setRoster] = useState([]);
+useEffect(() => {
+axios
+  .get('/scores')
+  .then(res => {
+    console.log('res:', res);
+    setRoster(res.data.scoreRoster);
+  })
+  .catch(err => {
+    console.log('an error occured while fetching to scores');
+    console.log(err);
+  })
+}, []);
     return(
       <div>
-        <h1>This is a homepage with tiny arms.</h1>
-        <Link to = "/signup">
-          <button id="signupButton">Sign Up</button>
+        <Container>
+        <h1>ATTACK OF THE TINY ARM INVADERS.</h1>
+        </Container>
+          <Link to = "/signup">
+        <Container>
+            <Button id="signupButton">New Here? Answer the Call.</Button>
+        </Container>
         </Link>
         <Link to = "/login">
-          <button id="loginButton">Login</button>
+        <Container>
+          <Button className="bouncy" id="loginButton">Faced Them Before? Enter the Battlefield.</Button>
+        
+        </Container>
         </Link>
-        <h2>I'm a Marketing thingy</h2>
+        <div className="githubdiv">
+        <a href="http://github.com/login/oauth/authorize?response_type=code&client_id=403beed96884fcf48e82&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fgame">
+          <Button>Signin with GitHub</Button>
+        </a>
+        </div>
+        <Container><h2> Long, long ago, Dinosaurs Roamed the Earth. </h2>
+        <h2> We Thought We Were Safe. Then They Returned. </h2>
+        <h2>In SpaceShips... and JetPacks.</h2></Container>
         <div>
-          {/* <ReactPlayer
+          <ReactPlayer
             url="https://youtu.be/MztdzGQ_IuM"
             controls
-          /> */}
-          <div>
-            {
-            console.log('roster:', typeof roster, roster)
-
-            }
-            {
-            console.log('roster.scoreRoster:', typeof roster.scoreRoster, roster.scoreRoster)
-
-            }
-          </div>
-          <div>
-          
-            <ul>
-              {
-              
-              roster.map(entry => (
-                <li>{entry.username}</li>
-              ))
-              } 
-           
-            </ul>
-          </div>
+          />
         </div>
-
-        {/* <div id='append' innerHTML={roster}>
-
-        <ul id='list'>
-          
-          
-        </ul>
-        </div> */}
-
+        <div className='scoreRoster'>
+          <ul>
+            {
+              roster.map(entry => (
+                <li key={keyNumber++}>{entry.username} : {entry.score}</li>
+              ))
+            }
+          </ul>
+        </div>
       </div>
     );
 };

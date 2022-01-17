@@ -1,4 +1,82 @@
 //This is where you would write your CSS/SASS.  It is connected and the rules are in place in your webpack.config.js file.
+body {
+  animation: theme 21s linear infinite;
+  
+  &:after,
+  &:before {
+      content: '';
+      display: block;
+      position: fixed;
+      z-index: -1;
+      top: 0;
+      width: 100vw;  // IE/Edge
+      height: 100vh; // fallback
+      width: 100vmax;
+      height: 100vmax;
+      background: rgba(0,0,0,0.05);
+      animation: background 90s linear infinite;
+  }
+
+  &:after {
+      left: 15vw;
+  }
+
+  &:before {
+      right: 15vw;
+      animation-delay: -30s;
+      animation-direction: reverse;
+  }
+}
+
+@keyframes theme {
+  0% {
+      background: #74C390;
+  }
+  
+  16% {
+      background: #5DBDB6;
+  }
+  
+  33% {
+      background: #59D4E1;
+  }
+  
+  50% {
+      background: #51BCE8;
+  }
+  
+  66% {
+      background: #FA5374;
+  }    
+  
+  83% {
+      background: #E46653;
+  }
+
+  100% {
+      background: #74C390;
+  }
+}
+
+@keyframes background {
+  0% {
+      transform: rotate(0deg);
+  }
+  
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+.centerDiv{
+  text-align: center;
+  font-family: 'Bangers', cursive;
+}
+
+.githubdiv{
+  text-align: center;
+  font-family: 'Bangers', cursive;
+}
 
 // * {
 //     box-sizing: border-box;
@@ -27,40 +105,59 @@
 // html {
 //   background-color: white;
 // }
-
-.grid {
-  width: 300px;
-  height: 300px;
-  border: solid black 1px;
-  display: flex;
-  flex-wrap: wrap;
+.bouncy{
+  animation: bouncy 5s infinite linear;
+  position: relative;
+  }
+@keyframes bouncy {
+  0%{top:0em}
+  40%{top:0em}
+  43%{top:-0.9em}
+  46%{top:0em}
+  48%{top:-0.4em}
+  50%{top:0em}
+  100%{top:0em;}
 }
-.grid div {
-  width: 20px;
-  height: 20px;
+h1 {
+  font-family: 'Bangers', cursive;
 }
-
-.invader {
-  //background-color: purple;
-  //border-radius: 10px;
-  //background-image: url('./assets/trexhead.jpeg');
-  background-image: url('https://mario.wiki.gallery/images/2/2c/Rex_SMW_sprite.png');
-}
-
-.shooter {
-  background-color: green;
+h2 {
+  font-family: 'Bangers', cursive;
 }
 
-.laser {
-  background-color: orange;
-}
+  .grid {
+    width: 300px;
+    height: 300px;
+    border: solid black 1px;
+    // margin: 200px;
+    // padding: 100px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .grid div {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .invader {
+    //background-color: purple;
+    //border-radius: 10px;
+    //background-image: url('./assets/trexhead.jpeg');
+    background-image: url('https://mario.wiki.gallery/images/2/2c/Rex_SMW_sprite.png');
+  }
+  
+  .shooter {
+    background-color: green;
+  
+  }
+  
+  .laser {
+    background-color: orange;
+  }
+  
+  .boom {
+    background-color: red;
+  }
 
-.boom {
-  background-color: red;
-}
-
-#roster {
-  width: 500px;
-  height: 500px;
-  border: solid black;
-}
+  

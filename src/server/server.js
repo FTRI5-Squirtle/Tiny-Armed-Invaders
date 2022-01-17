@@ -6,6 +6,7 @@ const scoreRoutes = require('./routes/scoreRoutes.js');
 
 const PORT = 3000;
 const app = express();
+// const { OauthTwo } = require('./controllers/oauthControllers')
 var cors = require('cors');
 
 app.use(express.urlencoded({ extended: true }));
@@ -14,11 +15,15 @@ app.use(express.json());
 
 app.use(express.static('assets'));
 
+
 app.use('/users', userRoutes);
 app.use('/scores', scoreRoutes);
 
 app.use(express.static(path.join(__dirname, '../' )))
 
+app.get('./auth/github/callback',(req, res) => {
+  res.redirect('./game')
+})
 
 app.get('/', (req, res) => {
   res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
