@@ -2,6 +2,8 @@ const path = require('path');
 const express = require('express');
 const { fsync } = require('fs');
 const userRoutes = require('./routes/userRoutes.js');
+const scoreRoutes = require('./routes/scoreRoutes.js');
+
 const PORT = 3000;
 const app = express();
 // const { OauthTwo } = require('./controllers/oauthControllers')
@@ -15,6 +17,7 @@ app.use(express.static('assets'));
 
 
 app.use('/users', userRoutes);
+app.use('/scores', scoreRoutes);
 
 app.use(express.static(path.join(__dirname, '../' )))
 
